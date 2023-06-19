@@ -1,40 +1,43 @@
 <app-titulo [titulo]="'Sistemas Operacionais'" [iconClass]="'bi bi-terminal'"></app-titulo>
+
 <div class="container">
 
-  <table class="table table-striped table-hover">
-    <thead class="thead-dark">
-      <tr>
-        <th>Id</th>
-        <th class="d-none d-md-table-cell">SO</th>
-        <th>Nome</th>
-        <th>Server</th>
-        <th>Opções</th>
-      </tr>
-    </thead>
-  <tbody>
-    <tr *ngFor="let item of oss">
-      <td>{{item.id}}</td>
-      <td class="d-none d-md-table-cell"><img src="../../../assets/centos-1.svg" width="50px" alt=""></td>
-      <td>{{item.name}}</td>
-      <table table table-striped table-hover>
-        <tr *ngFor="let server of item.servers">
-          <td>{{ server.name }}</td>
-        </tr>
-      </table>
-
-      <td>
-        <button type="button" class="btn btn-danger btn-lg" tooltip="Excluir">
-          <i class="bi bi-trash"></i>
-        </button>
-      </td>
-    </tr>
-  <tfoot *ngIf="!oss.length">
-    <tr>
-      <td colspan="8" class="text-center">
-        <h4>Nenhum os encontrado!</h4>
-      </td>
-    </tr>
-  </tfoot>
-</table>
+    <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th class="d-none d-md-table-cell">SO</th>
+                <th>Nome</th>
+                <th>Server</th>
+                <th>Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of oss">
+                <td>{{item.id}}</td>
+                <td class="d-none d-md-table-cell"><img src="../../../assets/{{item.name}}.svg" width="40px" alt=""></td>
+                <td>{{item.name}}</td>
+                <td>
+                    <a class="" data-bs-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" (click)="alterarImagem()">
+                        <i class="{{exibirImagem ? 'bi bi-plus-circle' : 'bi bi-dash-circle'}}"></i>
+                    </a>
+                    <ul *ngFor="let server of item.servers">
+                        <li class="collapse" id="collapseExample">{{ server.name }}</li>
+                    </ul>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger btn-lg" tooltip="Excluir">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                </td>
+            </tr>
+            <tfoot *ngIf="!oss.length">
+                <tr>
+                    <td colspan="8" class="text-center">
+                        <h4>Nenhum os encontrado!</h4>
+                    </td>
+                </tr>
+            </tfoot>
+    </table>
 
 </div>

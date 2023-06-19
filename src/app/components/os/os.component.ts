@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Os } from 'src/app/models/os';
 import { OsService } from 'src/app/services/os.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-os',
@@ -10,10 +11,12 @@ import { OsService } from 'src/app/services/os.service';
 export class OsComponent implements OnInit {
 
   public oss: Os[] = [];
+  public exibirImagem = true;
 
-  constructor(private service: OsService) { }
+  constructor(private service: OsService, private spinner: NgxSpinnerService,) { }
 
   ngOnInit(): void {
+    this.spinner.show();
     this.carregarOs();
   }
 
@@ -23,10 +26,15 @@ export class OsComponent implements OnInit {
         console.log(this.oss = ossRecebido);
       },
       error: (error: any) => {
-        console.log("Erro: ", error);
+        this.spinner.hide();;
       },
-      complete: () =>(console.log("Completou"))
+      complete: () => this.spinner.hide()
     });
   }
+
+  public alterarImagem(): void {
+    this.exibirImagem = !this.exibirImagem;
+  }
+
 
 }
