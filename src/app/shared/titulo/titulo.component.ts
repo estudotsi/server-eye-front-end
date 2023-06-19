@@ -10,7 +10,7 @@ export class TituloComponent implements OnInit {
   @Input() titulo!: string;
   @Input() iconClass = "bi bi-speedometer";
   @Input() subtitulo = 'Server Eye';
-  @Input() botaoListar = false;
+  @Input() botaoListar = true;
 
   constructor() { }
 
