@@ -11,7 +11,6 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class OsComponent implements OnInit {
 
   public oss: Os[] = [];
-  public exibirImagem = true;
 
   constructor(private service: OsService, private spinner: NgxSpinnerService,) { }
 
@@ -31,10 +30,5 @@ export class OsComponent implements OnInit {
       complete: () => this.spinner.hide()
     });
   }
-
-  public alterarImagem(): void {
-    this.exibirImagem = !this.exibirImagem;
-  }
-
 
 }

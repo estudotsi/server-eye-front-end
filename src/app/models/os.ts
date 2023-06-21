@@ -3,5 +3,6 @@
  export interface Os{
   id: number,
   name: string,
+  isExpand: boolean,
   servers: Server[]
 }
