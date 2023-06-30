@@ -1,0 +1,82 @@
+<div class="card rounded shadow-sm p-3">
+
+    <div class="d-flex">
+        <div class="flex-fill pr-3">
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">Filtro: </div>
+                </div>
+                <input type="text" class="form-control" placeholder="Filtrar por nome" [(ngModel)]="filtroLista">
+            </div>
+        </div>
+        <div class="custom-search">
+            <a class="d-flex btn btn-outline-primary" routerLink="/lista/detalhe">
+                <i class="bi bi-plus-circle-fill custom-icon-circle-fill"></i>
+                <b class="ml-1 d-none d-sm-block">Novo</b>
+            </a>
+        </div>
+    </div>
+
+    <table class="table table-hover">
+
+        <thead class="thead-dark">
+            <tr>
+                <th>Apps</th>
+                <th class="d-none d-md-table-cell">Id</th>
+                <th class="d-none d-md-table-cell">IP</th>
+                <th>Nome</th>
+                <th class="d-none d-md-table-cell">SO</th>
+                <th>Opções</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <ng-container *ngFor="let item of serversFiltrados">
+
+                <tr>
+                    <td (click)="item.isExpand = !item.isExpand">
+                        <i *ngIf="!item.isExpand" class="bi bi-plus-circle custom-icon-plus"></i>
+                        <i *ngIf="item.isExpand" class="bi bi-dash-circle custom-icon-dash"></i>
+                    </td>
+                    <td class="d-none d-md-table-cell">{{item.id}}</td>
+                    <td class="d-none d-md-table-cell">{{item.ip}}</td>
+                    <td>{{item.name}}</td>
+                    <td class="d-none d-md-table-cell"><img src="../../../assets/{{item.os.name}}.svg" width="40px" alt="">{{item.os.name}}</td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-lg">
+                    <i class="bi bi-trash"></i>
+                  </button>
+                    </td>
+                </tr>
+
+                <tr *ngIf="item.isExpand">
+                    <td>
+                        <table class="table table-borderless table-info">
+                            <thead>
+                                <th>Nome</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let server of item.apps">
+                                    <td>{{ server.nome }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+
+            </ng-container>
+
+        </tbody>
+
+        <tfoot *ngIf="!servers.length">
+            <tr>
+                <td colspan="8" class="text-center">
+                    <h4>Nenhum servidor encontrado!</h4>
+                </td>
+            </tr>
+        </tfoot>
+
+    </table>
+
+</div>

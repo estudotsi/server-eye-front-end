@@ -15,8 +15,7 @@ export class OsComponent implements OnInit {
   constructor(private service: OsService, private spinner: NgxSpinnerService,) { }
 
   ngOnInit(): void {
-    this.spinner.show();
-    this.carregarOs();
+
   }
 
   public carregarOs(): void{

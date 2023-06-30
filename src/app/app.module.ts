@@ -15,6 +15,7 @@ import { ServerComponent } from './components/server/server.component';
 import { OsComponent } from './components/os/os.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OsListaComponent } from './components/os/os-lista/os-lista.component';
+import { ServerListaComponent } from './components/server/server-lista/server-lista.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { OsListaComponent } from './components/os/os-lista/os-lista.component';
     ServerComponent,
     OsComponent,
     DashboardComponent,
-    OsListaComponent
+    OsListaComponent,
+    ServerListaComponent
   ],
   imports: [
     BrowserModule,

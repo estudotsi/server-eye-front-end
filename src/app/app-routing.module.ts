@@ -4,6 +4,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ServerComponent } from './components/server/server.component';
 import { OsComponent } from './components/os/os.component';
 import { OsListaComponent } from './components/os/os-lista/os-lista.component';
+import { ServerListaComponent } from './components/server/server-lista/server-lista.component';
 
 const routes: Routes = [
 
@@ -14,9 +15,15 @@ const routes: Routes = [
       { path: 'lista', component: OsListaComponent },
     ],
   },
+  { path: 'server', redirectTo: 'server/lista' },
+  {
+    path: 'server', component: ServerComponent,
+    children: [
+      { path: 'lista', component: ServerListaComponent },
+    ],
+  },
 
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'servers', component: ServerComponent },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: '**', redirectTo: 'dashboard', pathMatch: 'full' },
 

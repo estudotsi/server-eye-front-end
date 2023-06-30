@@ -44,7 +44,7 @@ export class OsListaComponent implements OnInit {
         this.ossFiltrados = this.oss;
       },
       error: (error: any) => {
-        this.spinner.hide();;
+        this.spinner.hide();
       },
       complete: () => this.spinner.hide()
     });
