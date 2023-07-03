@@ -31,7 +31,7 @@ export class ApplicationListaComponent implements OnInit {
   public filtrarEventos(filtrarPor: string): Application[] {
     filtrarPor = filtrarPor.toLocaleLowerCase();
     return this.apps.filter(
-      apps => apps.nome.toLocaleLowerCase().indexOf(filtrarPor) !== -1
+      apps => apps.name.toLocaleLowerCase().indexOf(filtrarPor) !== -1
     );
   }
 
