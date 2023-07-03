@@ -14,7 +14,7 @@ export class OsListaComponent implements OnInit {
   public ossFiltrados: Os[] = [];
   private filtroListado = '';
 
-  constructor(private service: OsService, private spinner: NgxSpinnerService,) { }
+  constructor(private service: OsService, private spinner: NgxSpinnerService) { }
 
   public get filtroLista(): string {
     return this.filtroListado;

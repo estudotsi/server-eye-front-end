@@ -1,4 +1,4 @@
-import { App } from "./app";
+import { Application } from "./appplication";
 import { Os } from "./os";
 
 export interface Server{
@@ -6,6 +6,6 @@ export interface Server{
   ip: string,
   name: string,
   isExpand: boolean,
-  apps: App[],
+  apps: Application[],
   os: Os
 }

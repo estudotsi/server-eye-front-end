@@ -15,4 +15,8 @@ export class ServerService {
   public getServer(): Observable<Server[]> {
     return this.http.get<Server[]>(this.baseUrl);
   }
+
+  public getServerById(id: number): Observable<Server> {
+    return this.http.get<Server>(`${this.baseUrl}/${id}`);
+  }
 }

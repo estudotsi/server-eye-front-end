@@ -16,6 +16,8 @@ import { OsComponent } from './components/os/os.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OsListaComponent } from './components/os/os-lista/os-lista.component';
 import { ServerListaComponent } from './components/server/server-lista/server-lista.component';
+import { ApplicationComponent } from './components/application/application.component';
+import { ApplicationListaComponent } from './components/application/application-lista/applicaton-lista.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ServerListaComponent } from './components/server/server-lista/server-li
     OsComponent,
     DashboardComponent,
     OsListaComponent,
-    ServerListaComponent
+    ServerListaComponent,
+    ApplicationComponent,
+    ApplicationListaComponent
   ],
   imports: [
     BrowserModule,

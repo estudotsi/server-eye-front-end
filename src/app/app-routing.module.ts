@@ -5,8 +5,18 @@ import { ServerComponent } from './components/server/server.component';
 import { OsComponent } from './components/os/os.component';
 import { OsListaComponent } from './components/os/os-lista/os-lista.component';
 import { ServerListaComponent } from './components/server/server-lista/server-lista.component';
+import { ApplicationComponent } from './components/application/application.component';
+import { ApplicationListaComponent } from './components/application/application-lista/applicaton-lista.component';
 
 const routes: Routes = [
+
+  { path: 'application', redirectTo: 'application/lista' },
+  {
+    path: 'application', component: ApplicationComponent,
+    children: [
+      { path: 'lista', component: ApplicationListaComponent },
+    ],
+  },
 
   { path: 'os', redirectTo: 'os/lista' },
   {
@@ -15,6 +25,7 @@ const routes: Routes = [
       { path: 'lista', component: OsListaComponent },
     ],
   },
+
   { path: 'server', redirectTo: 'server/lista' },
   {
     path: 'server', component: ServerComponent,
