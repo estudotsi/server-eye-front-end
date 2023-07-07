@@ -23,7 +23,8 @@
             <tr>
                 <th>Nome</th>
                 <th>Servidor</th>
-                <th>Sistema</th>
+                <th class="d-none d-md-table-cell">Sistema</th>
+                <th class="d-none d-md-table-cell">DB</th>
                 <th class="d-none d-md-table-cell">Id</th>
                 <th>Opções</th>
             </tr>
@@ -35,16 +36,20 @@
 
                 <tr>
                     <td>{{item.name}}</td>
-                    <td class="d-none d-md-table-cell">{{item.server.name}}</td>
-                    <td (click)="item.isExpand = !item.isExpand">
+                    <td>{{item.server.name}}</td>
+                    <td class="d-none d-md-table-cell" (click)="item.isExpand = !item.isExpand">
                         <i *ngIf="!item.isExpand" class="bi bi-plus-circle custom-icon-plus" (click)="pesquisarOs(item.server.id)"></i>
                         <i *ngIf="item.isExpand" class="bi bi-dash-circle custom-icon-dash"></i>
                     </td>
+                    <td class="d-none d-md-table-cell">{{item.db.name}}</td>
                     <td class="d-none d-md-table-cell">{{item.id}}</td>
-                    <td>
-                        <button type="button" class="btn btn-danger btn-lg">
+                    <td class="d-flex">
+                        <button type="button" class="btn btn-danger btn-sm">
                       <i class="bi bi-trash"></i>
-                    </button>
+                      </button>
+                        <button type="button" class="btn btn-warning btn-sm ms-2">
+                        <i class="bi bi-pen"></i>
+                        </button>
                     </td>
                 </tr>
 

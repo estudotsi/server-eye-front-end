@@ -18,6 +18,10 @@ import { OsListaComponent } from './components/os/os-lista/os-lista.component';
 import { ServerListaComponent } from './components/server/server-lista/server-lista.component';
 import { ApplicationComponent } from './components/application/application.component';
 import { ApplicationListaComponent } from './components/application/application-lista/applicaton-lista.component';
+import { ServerPorRedeComponent } from './components/server/server-por-rede/server-por-rede.component';
+import { RedirectComponent } from './components/server/redirect/redirect.component';
+import { DbComponent } from './components/db/db.component';
+import { DbListaComponent } from './components/db-lista/db-lista.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,11 @@ import { ApplicationListaComponent } from './components/application/application-
     OsListaComponent,
     ServerListaComponent,
     ApplicationComponent,
-    ApplicationListaComponent
+    ApplicationListaComponent,
+    ServerPorRedeComponent,
+    RedirectComponent,
+    DbComponent,
+    DbListaComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,5 @@
+<app-titulo [titulo]="'Servidores'" [iconClass]="'bi bi-hdd-rack'"></app-titulo>
+
 <div class="card rounded shadow-sm p-3">
 
     <div class="d-flex">
@@ -21,17 +23,19 @@
 
         <thead class="thead-dark">
             <tr>
-                <th>Servidor</th>
+                <th>Apps/Bancos</th>
                 <th class="d-none d-md-table-cell">Id</th>
-                <th class="d-none d-md-table-cell">SO</th>
+                <th class="d-none d-md-table-cell">IP</th>
                 <th>Nome</th>
+                <th class="d-none d-md-table-cell">SO</th>
+                <th class="d-none d-md-table-cell">Rede</th>
                 <th>Opções</th>
             </tr>
         </thead>
 
         <tbody>
 
-            <ng-container *ngFor="let item of ossFiltrados">
+            <ng-container *ngFor="let item of serversFiltrados">
 
                 <tr>
                     <td (click)="item.isExpand = !item.isExpand">
@@ -39,15 +43,17 @@
                         <i *ngIf="item.isExpand" class="bi bi-dash-circle custom-icon-dash"></i>
                     </td>
                     <td class="d-none d-md-table-cell">{{item.id}}</td>
-                    <td class="d-none d-md-table-cell"><img src="../../../assets/{{item.name}}.svg" width="40px" alt=""></td>
+                    <td class="d-none d-md-table-cell">{{item.ip}}</td>
                     <td>{{item.name}}</td>
+                    <td class="d-none d-md-table-cell"><img src="../../../assets/{{item.os.name}}.svg" width="40px" alt="">{{item.os.name}}</td>
+                    <td class="d-none d-md-table-cell">{{item.rede}}</td>
                     <td class="d-flex">
                         <button type="button" class="btn btn-danger btn-sm">
-                        <i class="bi bi-trash"></i>
-                      </button>
+                    <i class="bi bi-trash"></i>
+                  </button>
                         <button type="button" class="btn btn-warning btn-sm ms-2">
-                        <i class="bi bi-pen"></i>
-                      </button>
+                    <i class="bi bi-pen"></i>
+                  </button>
                     </td>
                 </tr>
 
@@ -55,27 +61,31 @@
                     <td>
                         <table class="table table-borderless table-info">
                             <thead>
-                                <th>Nome</th>
-                                <th>Ip</th>
+                                <th>Apps</th>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let server of item.servers">
-                                    <td>{{ server.name }}</td>
-                                    <td>{{ server.ip }}</td>
+                                <tr *ngFor="let server of item.apps">
+                                    <td class="expand">{{ server.name }}</td>
+                                </tr>
+                            </tbody>
+                            <thead>
+                                <th>Bancos</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let db of item.dBs">
+                                    <td class="expand">{{ db.name }}</td>
                                 </tr>
                             </tbody>
                         </table>
                     </td>
                 </tr>
-
             </ng-container>
-
         </tbody>
 
-        <tfoot *ngIf="!oss.length">
+        <tfoot *ngIf="!servers.length">
             <tr>
                 <td colspan="8" class="text-center">
-                    <h4>Nenhum os encontrado!</h4>
+                    <h4>Nenhum servidor encontrado!</h4>
                 </td>
             </tr>
         </tfoot>

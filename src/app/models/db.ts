@@ -1,3 +1,4 @@
+import { Application } from "./appplication";
 import { Server } from "./server";
 
 export interface Db{
@@ -5,5 +6,6 @@ export interface Db{
   name: string,
   ip: string,
   isExpand: boolean,
-  server: Server
+  server: Server,
+  app: Application
 }

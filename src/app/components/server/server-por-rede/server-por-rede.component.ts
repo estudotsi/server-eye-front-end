@@ -1,21 +1,23 @@
-import { Component, DoCheck, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, ElementRef, HostListener, Input, OnInit, SimpleChanges } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Server } from 'src/app/models/server';
 import { ServerService } from 'src/app/services/server.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
-  selector: 'app-server-lista',
-  templateUrl: './server-lista.component.html',
-  styleUrls: ['./server-lista.component.scss']
+  selector: 'app-server-por-rede',
+  templateUrl: './server-por-rede.component.html',
+  styleUrls: ['./server-por-rede.component.scss']
 })
-export class ServerListaComponent implements OnInit {
+export class ServerPorRedeComponent implements OnInit {
 
+  public receivedRede: string = "";
   public servers: Server[] = [];
   public serversFiltrados: Server[] = [];
   private filtroListado = '';
+  public controlData: string = "";
 
-  constructor(private service: ServerService, private spinner: NgxSpinnerService, private router: Router) { }
+  constructor(private sharedService: SharedService, private service: ServerService, private spinner: NgxSpinnerService) {}
 
   public get filtroLista(): string{
     return this.filtroListado;
@@ -35,13 +37,19 @@ export class ServerListaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.router.navigate(['/server'])
+    this.receiveData();
     this.spinner.show();
     this.carregarServers();
   }
 
+  public receiveData(){
+    this.sharedService.getData().subscribe(data => {
+        this.receivedRede = data;
+    });
+  }
+
   public carregarServers(): void{
-    this.service.getServer().subscribe({
+    this.service.getServerByRede(this.receivedRede).subscribe({
       next: (serversRecebidos: Server[]) => {
         this.servers = serversRecebidos;
         this.serversFiltrados = this.servers;

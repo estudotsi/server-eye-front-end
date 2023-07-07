@@ -9,6 +9,7 @@ import { Server } from '../models/server';
 export class ServerService {
 
   baseUrl ='https://localhost:7284/api/Server';
+  urlRede = 'https://localhost:7284/api/Server/rede';
 
   constructor(public http: HttpClient) { }
 
@@ -19,4 +20,9 @@ export class ServerService {
   public getServerById(id: number): Observable<Server> {
     return this.http.get<Server>(`${this.baseUrl}/${id}`);
   }
+
+  public getServerByRede(rede: string): Observable<Server[]> {
+    return this.http.get<Server[]>(`${this.urlRede}/${rede}`);
+  }
+
 }

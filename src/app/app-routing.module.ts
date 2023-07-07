@@ -7,6 +7,10 @@ import { OsListaComponent } from './components/os/os-lista/os-lista.component';
 import { ServerListaComponent } from './components/server/server-lista/server-lista.component';
 import { ApplicationComponent } from './components/application/application.component';
 import { ApplicationListaComponent } from './components/application/application-lista/applicaton-lista.component';
+import { ServerPorRedeComponent } from './components/server/server-por-rede/server-por-rede.component';
+import { RedirectComponent } from './components/server/redirect/redirect.component';
+import { DbComponent } from './components/db/db.component';
+import { DbListaComponent } from './components/db-lista/db-lista.component';
 
 const routes: Routes = [
 
@@ -15,6 +19,14 @@ const routes: Routes = [
     path: 'application', component: ApplicationComponent,
     children: [
       { path: 'lista', component: ApplicationListaComponent },
+    ],
+  },
+
+  { path: 'database', redirectTo: 'database/lista' },
+  {
+    path: 'database', component: DbComponent,
+    children: [
+      { path: 'lista', component: DbListaComponent },
     ],
   },
 
@@ -33,6 +45,8 @@ const routes: Routes = [
       { path: 'lista', component: ServerListaComponent },
     ],
   },
+  { path: 'server-por-rede', component: ServerPorRedeComponent },
+  { path: 'redirect', component: RedirectComponent },
 
   { path: 'dashboard', component: DashboardComponent },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },

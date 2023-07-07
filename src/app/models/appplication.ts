@@ -1,3 +1,4 @@
+import { Db } from "./db";
 import { Server } from "./server";
 
 export interface Application{
@@ -5,4 +6,5 @@ export interface Application{
   name: string,
   isExpand: boolean,
   server: Server
+  db: Db
 }

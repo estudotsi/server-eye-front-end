@@ -8,8 +8,16 @@
   </button>
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="server" href="#">Servidores</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Servidores</a>
+                    <div class="dropdown-menu bg-light">
+                        <a class="dropdown-item" routerLink="server">Todos</a>
+                        <a class="dropdown-item" routerLink="redirect" (click)="sendData('Interna')">Interna</a>
+                        <a class="dropdown-item" routerLink="redirect" (click)="sendData('Sutic')">Sutic</a>
+                        <a class="dropdown-item" routerLink="redirect" (click)="sendData('Sutic Antiga')">Sutic Antiga</a>
+                        <!--<div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a>-->
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="os">Sistemas Operacionais</a>
@@ -18,17 +26,7 @@
                     <a class="nav-link" routerLink="application">Aplicações</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                    <div class="dropdown-menu bg-light">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Separated link</a>
-                    </div>
+                    <a class="nav-link" routerLink="database">Databases</a>
                 </li>
             </ul>
 

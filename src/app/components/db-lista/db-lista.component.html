@@ -21,50 +21,32 @@
 
         <thead class="thead-dark">
             <tr>
-                <th>Servidor</th>
                 <th class="d-none d-md-table-cell">Id</th>
-                <th class="d-none d-md-table-cell">SO</th>
                 <th>Nome</th>
+                <th class="d-none d-md-table-cell">IP</th>
+                <th class="d-none d-md-table-cell">Server</th>
+                <th class="d-none d-md-table-cell">App</th>
                 <th>Opções</th>
             </tr>
         </thead>
 
         <tbody>
 
-            <ng-container *ngFor="let item of ossFiltrados">
+            <ng-container *ngFor="let item of dbsFiltrados">
 
                 <tr>
-                    <td (click)="item.isExpand = !item.isExpand">
-                        <i *ngIf="!item.isExpand" class="bi bi-plus-circle custom-icon-plus"></i>
-                        <i *ngIf="item.isExpand" class="bi bi-dash-circle custom-icon-dash"></i>
-                    </td>
                     <td class="d-none d-md-table-cell">{{item.id}}</td>
-                    <td class="d-none d-md-table-cell"><img src="../../../assets/{{item.name}}.svg" width="40px" alt=""></td>
                     <td>{{item.name}}</td>
+                    <td class="d-none d-md-table-cell">{{item.ip}}</td>
+                    <td class="d-none d-md-table-cell">{{item.server.name}}</td>
+                    <td class="d-none d-md-table-cell">{{item.app.name}}</td>
                     <td class="d-flex">
                         <button type="button" class="btn btn-danger btn-sm">
-                        <i class="bi bi-trash"></i>
-                      </button>
+                      <i class="bi bi-trash"></i>
+                    </button>
                         <button type="button" class="btn btn-warning btn-sm ms-2">
-                        <i class="bi bi-pen"></i>
-                      </button>
-                    </td>
-                </tr>
-
-                <tr *ngIf="item.isExpand">
-                    <td>
-                        <table class="table table-borderless table-info">
-                            <thead>
-                                <th>Nome</th>
-                                <th>Ip</th>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let server of item.servers">
-                                    <td>{{ server.name }}</td>
-                                    <td>{{ server.ip }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                      <i class="bi bi-pen"></i>
+                    </button>
                     </td>
                 </tr>
 
@@ -72,7 +54,7 @@
 
         </tbody>
 
-        <tfoot *ngIf="!oss.length">
+        <tfoot *ngIf="!dbs.length">
             <tr>
                 <td colspan="8" class="text-center">
                     <h4>Nenhum os encontrado!</h4>
