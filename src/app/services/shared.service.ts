@@ -8,7 +8,7 @@ export class SharedService {
 
   private dataSubject = new BehaviorSubject<string>('');
 
-  setData(data: string) {
+  setData(data: any) {
     this.dataSubject.next(data);
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Os } from 'src/app/models/os';
 import { OsService } from 'src/app/services/os.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-os-lista',
@@ -14,7 +15,7 @@ export class OsListaComponent implements OnInit {
   public ossFiltrados: Os[] = [];
   private filtroListado = '';
 
-  constructor(private service: OsService, private spinner: NgxSpinnerService) { }
+  constructor(private sharedService: SharedService, private service: OsService, private spinner: NgxSpinnerService) { }
 
   public get filtroLista(): string {
     return this.filtroListado;
@@ -48,6 +49,11 @@ export class OsListaComponent implements OnInit {
       },
       complete: () => this.spinner.hide()
     });
+  }
+
+  sendData(button: boolean){
+    const data = button;
+    this.sharedService.setData(data);
   }
 
 }

@@ -2,7 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -22,6 +22,8 @@ import { ServerPorRedeComponent } from './components/server/server-por-rede/serv
 import { RedirectComponent } from './components/server/redirect/redirect.component';
 import { DbComponent } from './components/db/db.component';
 import { DbListaComponent } from './components/db-lista/db-lista.component';
+import { OsNovoComponent } from './components/os/os-novo/os-novo.component';
+import { OsDetalhesComponent } from './components/os/os-detalhes/os-detalhes.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { DbListaComponent } from './components/db-lista/db-lista.component';
     ServerPorRedeComponent,
     RedirectComponent,
     DbComponent,
-    DbListaComponent
+    DbListaComponent,
+    OsNovoComponent,
+    OsDetalhesComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +51,7 @@ import { DbListaComponent } from './components/db-lista/db-lista.component';
     BrowserAnimationsModule,
     NgxSpinnerModule,
     FormsModule,
+    ReactiveFormsModule,
     TooltipModule.forRoot()
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

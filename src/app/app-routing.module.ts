@@ -11,6 +11,7 @@ import { ServerPorRedeComponent } from './components/server/server-por-rede/serv
 import { RedirectComponent } from './components/server/redirect/redirect.component';
 import { DbComponent } from './components/db/db.component';
 import { DbListaComponent } from './components/db-lista/db-lista.component';
+import { OsNovoComponent } from './components/os/os-novo/os-novo.component';
 
 const routes: Routes = [
 
@@ -35,6 +36,7 @@ const routes: Routes = [
     path: 'os', component: OsComponent,
     children: [
       { path: 'lista', component: OsListaComponent },
+      { path: 'novo', component: OsNovoComponent },
     ],
   },
 
