@@ -26,9 +26,14 @@ export class OsNovoComponent implements OnInit {
 
   public AddOs(){
     this.spinner.show();
-    this.service.Add(this.form.value).subscribe({
-      next:
-    })
+    if(this.form.valid){
+      this.service.Add(this.form.value).subscribe({
+        next: x => console.log('The next value is: ', x),
+        error: err => console.error('An error occurred :', err),
+        complete: () => console.log('There are no more action happen.')
+      })
+    }
+
   }
 
 }
