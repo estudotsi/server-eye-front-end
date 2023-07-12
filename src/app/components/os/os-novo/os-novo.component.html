@@ -28,9 +28,9 @@
                 <button class="btn btn-secondary">
                     Cancelar Alteração
                   </button>
-                <button class="btn btn-success" [disabled]="!form.valid">
+                <button class="btn btn-success" [disabled]="!form.valid" (click)="AddOs()">
                     Salvar Evento
-                  </button>
+                </button>
             </div>
         </div>
     </form>

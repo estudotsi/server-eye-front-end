@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './shared/nav/nav.component';
@@ -52,7 +53,8 @@ import { OsDetalhesComponent } from './components/os/os-detalhes/os-detalhes.com
     NgxSpinnerModule,
     FormsModule,
     ReactiveFormsModule,
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    ToastrModule.forRoot()
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
