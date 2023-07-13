@@ -42,7 +42,7 @@
                     <td class="d-none d-md-table-cell"><img src="../../../assets/{{item.name}}.svg" width="40px" alt=""></td>
                     <td>{{item.name}}</td>
                     <td class="d-flex">
-                        <button type="button" class="btn btn-danger btn-sm">
+                        <button type="button" class="btn btn-danger btn-sm" (click)="openModal(template, item.id)">
                         <i class="bi bi-trash"></i>
                       </button>
                         <button type="button" class="btn btn-warning btn-sm ms-2">
@@ -81,5 +81,13 @@
         </tfoot>
 
     </table>
+
+    <ng-template #template>
+        <div class="modal-body text-center">
+            <p>Confirma ?</p>
+            <button type="button" class="btn btn-default" (click)="confirm()">Sim</button>
+            <button type="button" class="btn btn-primary" (click)="decline()">Não</button>
+        </div>
+    </ng-template>
 
 </div>

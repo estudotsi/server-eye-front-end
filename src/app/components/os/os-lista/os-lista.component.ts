@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Os } from 'src/app/models/os';
 import { OsService } from 'src/app/services/os.service';
 import { SharedService } from 'src/app/services/shared.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-os-lista',
@@ -11,11 +14,18 @@ import { SharedService } from 'src/app/services/shared.service';
 })
 export class OsListaComponent implements OnInit {
 
+  modalRef?: BsModalRef;
   public oss: Os[] = [];
   public ossFiltrados: Os[] = [];
   private filtroListado = '';
+  public idDelete!: number;
 
-  constructor(private sharedService: SharedService, private service: OsService, private spinner: NgxSpinnerService) { }
+  constructor(private sharedService: SharedService,
+              private service: OsService,
+              private spinner: NgxSpinnerService,
+              private modalService: BsModalService,
+              private toastr: ToastrService,
+              private router: Router) { }
 
   public get filtroLista(): string {
     return this.filtroListado;
@@ -54,6 +64,33 @@ export class OsListaComponent implements OnInit {
   sendData(button: boolean){
     const data = button;
     this.sharedService.setData(data);
+  }
+
+  openModal(template: TemplateRef<any>, id: number) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+    this.idDelete = id;
+  }
+
+  confirm(): void {
+    this.modalRef?.hide();
+    this.spinner.show();
+    this.service.Delete(this.idDelete).subscribe({
+      next: () =>  {
+        this.carregarOs();
+        this.toastr.success('Sistema deletado com sucesso', 'Sucesso');
+      },
+      error: (erro: any)=> {
+        this.toastr.error('Erro ao deletar o sistema', 'Erro');
+        this.spinner.hide();
+      },
+      complete: () => {
+        this.spinner.hide();
+      }
+    })
+  }
+
+  decline(): void {
+    this.modalRef?.hide();
   }
 
 }

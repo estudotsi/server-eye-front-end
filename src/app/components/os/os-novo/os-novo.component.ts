@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
+import { Os } from 'src/app/models/os';
 import { OsService } from 'src/app/services/os.service';
 
 @Component({
@@ -11,8 +14,13 @@ import { OsService } from 'src/app/services/os.service';
 export class OsNovoComponent implements OnInit {
 
   form!: FormGroup;
+  os!: Os;
 
-  constructor(private fb: FormBuilder, private spinner: NgxSpinnerService, private service: OsService) { }
+  constructor(private fb: FormBuilder,
+              private spinner: NgxSpinnerService,
+              private service: OsService,
+              private toastr: ToastrService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.validation();
@@ -24,13 +32,25 @@ export class OsNovoComponent implements OnInit {
     });
   }
 
+
   public AddOs(){
+    this.os = this.form.value;
     this.spinner.show();
     if(this.form.valid){
-      this.service.Add(this.form.value).subscribe({
-        next: x => console.log('The next value is: ', x),
-        error: err => console.error('An error occurred :', err),
-        complete: () => console.log('There are no more action happen.')
+      this.service.Add(this.os).subscribe({
+        next: (os: Os) => {
+          console.log("Retor os: ", os);
+          this.toastr.success('Sistema salvo com sucesso', 'Sucesso');
+          this.router.navigate([ '/os' ]);
+        },
+        error: (erro: any)=> {
+          console.log("Erro os: ", erro);
+          this.spinner.hide();
+          this.toastr.error('Erro ao salvar o sistema', 'Erro');
+        },
+        complete: () => {
+          this.spinner.hide();
+        }
       })
     }
 

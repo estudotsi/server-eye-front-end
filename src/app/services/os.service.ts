@@ -20,4 +20,8 @@ export class OsService {
     return this.http.post<Os>(this.baseUrl, os);
   }
 
+  public Delete(id: number): Observable<any>{
+    return this.http.delete(`${this.baseUrl}/${id}`);
+  }
+
 }
