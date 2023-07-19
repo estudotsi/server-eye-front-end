@@ -32,7 +32,6 @@ export class OsNovoComponent implements OnInit {
     });
   }
 
-
   public AddOs(){
     this.os = this.form.value;
     this.spinner.show();

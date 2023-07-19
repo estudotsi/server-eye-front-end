@@ -49,7 +49,7 @@ export class OsListaComponent implements OnInit {
   }
 
   public carregarOs(): void{
-    this.service.getOs().subscribe({
+    this.service.GetOs().subscribe({
       next: (ossRecebido: Os[]) => {
         this.oss = ossRecebido;
         this.ossFiltrados = this.oss;
@@ -91,6 +91,11 @@ export class OsListaComponent implements OnInit {
 
   decline(): void {
     this.modalRef?.hide();
+  }
+
+  alterarOs(id: number): void{
+    console.log(id);
+    this.router.navigate([`os/detalhe/${id}`]);
   }
 
 }

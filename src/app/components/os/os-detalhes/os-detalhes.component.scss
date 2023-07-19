@@ -1,0 +1,46 @@
+.card-img-block {
+    img {
+        cursor: pointer;
+        border-radius: 3px 3px 0px 0px;
+        max-width: 245px;
+    }
+}
+
+.custom-class {
+    font-size: 20px;
+    font-weight: 600;
+    background-image: linear-gradient(to left, #553c9a, #b393d3);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.custom.input {
+    background-color: blue;
+}
+
+.custom-card {
+    border-radius: 6px;
+}
+
+@media (max-width: 1200px) {
+    .card-img-block {
+        img {
+            cursor: pointer;
+            border-radius: 3px 3px 0px 0px;
+            max-width: 200px;
+            height: 128px;
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .card-img-block {
+        img {
+            cursor: pointer;
+            border-radius: 3px 3px 0px 0px;
+            max-width: 150px;
+            height: 128px;
+        }
+    }
+}

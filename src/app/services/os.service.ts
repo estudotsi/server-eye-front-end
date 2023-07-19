@@ -12,7 +12,7 @@ export class OsService {
 
   constructor(public http: HttpClient) { }
 
-  public getOs(): Observable<Os[]> {
+  public GetOs(): Observable<Os[]> {
     return this.http.get<Os[]>(this.baseUrl);
   }
 
@@ -22,6 +22,14 @@ export class OsService {
 
   public Delete(id: number): Observable<any>{
     return this.http.delete(`${this.baseUrl}/${id}`);
+  }
+
+  public GetOsById(id: number): Observable<any>{
+    return this.http.get(`${this.baseUrl}/${id}`);
+  }
+
+  public UpdateOs(os: Os): Observable<any>{
+    return this.http.put(`${this.baseUrl}/${os.id}`, os);
   }
 
 }

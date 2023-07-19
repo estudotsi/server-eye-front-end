@@ -18,16 +18,4 @@ export class OsComponent implements OnInit {
 
   }
 
-  public carregarOs(): void{
-    this.service.getOs().subscribe({
-      next: (ossRecebido: Os[]) => {
-        console.log(this.oss = ossRecebido);
-      },
-      error: (error: any) => {
-        this.spinner.hide();;
-      },
-      complete: () => this.spinner.hide()
-    });
-  }
-
 }
