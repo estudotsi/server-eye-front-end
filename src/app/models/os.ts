@@ -3,7 +3,7 @@
  export interface Os{
   id: number,
   name: string,
-  imageUrl: string,
+  imagemURL: string,
   isExpand: boolean,
   servers: Server[]
 }

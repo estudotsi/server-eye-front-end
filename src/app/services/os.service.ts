@@ -32,4 +32,14 @@ export class OsService {
     return this.http.put(`${this.baseUrl}/${os.id}`, os);
   }
 
+  postUpload(osId: number, file: File): Observable<Os> {
+    const fileToUpload = file as File;
+    const formData = new FormData();
+    formData.append('file', fileToUpload);
+
+    return this.http
+      .post<Os>(`${this.baseUrl}/upload-image/${osId}`, formData)
+      .pipe(take(1));
+  }
+
 }

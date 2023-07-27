@@ -34,6 +34,11 @@ public carregarOs(): void{
       next: (osRecebido: Os) => {
         this.os = {...osRecebido};
         this.form.patchValue(this.os);
+        console.log("Aqui os: ", this.os);
+        if(this.os.imagemURL !== ''){
+          console.log("Teste", this.os.imagemURL)
+          this.imagemUrl = 'https://localhost:7284' + '/resources/images/' + this.os.imagemURL;
+        }
       },
       error: (error: any) => {
         this.toastr.error("Erro ao carregar Sistema");
@@ -81,11 +86,30 @@ public carregarOs(): void{
     }
   }
 
-  onFileChange(evento: any): void{
-    const reader = new FileReader;
+  onFileChange(ev: any): void {
+    const reader = new FileReader();
+
     reader.onload = (event: any) => this.imagemUrl = event.target.result;
-    this.file = evento.target.files[0];
+
+    this.file = ev.target.files[0];
     reader.readAsDataURL(this.file);
 
+    console.log(this.file);
+    this.uploadImagem();
   }
+
+  uploadImagem(): void {
+    this.spinner.show();
+    this.service.postUpload(this.osId, this.file).subscribe(
+      () => {
+        this.carregarOs();
+        this.toastr.success('Imagem atualizada com Sucesso', 'Sucesso!');
+      },
+      (error: any) => {
+        this.toastr.error('Erro ao fazer upload de imagem', 'Erro!');
+        console.log(error);
+      }
+    ).add(() => this.spinner.hide());
+  }
+
 }
