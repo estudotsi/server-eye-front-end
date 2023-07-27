@@ -1,8 +1,7 @@
 .card-img-block {
     img {
         cursor: pointer;
-        border-radius: 3px 3px 0px 0px;
-        max-width: 245px;
+        padding: 10px;
     }
 }
 
@@ -13,6 +12,16 @@
     color: transparent;
     background-clip: text;
     -webkit-background-clip: text;
+    margin-bottom: -5px;
+    margin-top: 7px;
+}
+
+a {
+    text-decoration: none;
+}
+
+i {
+    margin-right: 5px;
 }
 
 .custom.input {
@@ -23,24 +32,21 @@
     border-radius: 6px;
 }
 
-@media (max-width: 1200px) {
-    .card-img-block {
-        img {
-            cursor: pointer;
-            border-radius: 3px 3px 0px 0px;
-            max-width: 200px;
-            height: 128px;
-        }
-    }
+.custom-image {
+    margin-top: 20px;
 }
 
-@media (max-width: 992px) {
-    .card-img-block {
-        img {
-            cursor: pointer;
-            border-radius: 3px 3px 0px 0px;
-            max-width: 150px;
-            height: 128px;
-        }
+@media screen and (max-width: 775px) {
+    .custom-div {
+        flex-direction: column;
+        align-items: center;
+    }
+    .custom-image {
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+    .custom-class {
+        font-weight: normal;
+        font-size: 13px;
     }
 }

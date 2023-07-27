@@ -23,7 +23,7 @@
             <tr>
                 <th>Servidor</th>
                 <th class="d-none d-md-table-cell">Id</th>
-                <th class="d-none d-md-table-cell">SO</th>
+                <th>SO</th>
                 <th>Nome</th>
                 <th>Opções</th>
             </tr>
@@ -39,7 +39,7 @@
                         <i *ngIf="item.isExpand" class="bi bi-dash-circle custom-icon-dash"></i>
                     </td>
                     <td class="d-none d-md-table-cell">{{item.id}}</td>
-                    <td class="d-none d-md-table-cell"><img src="../../../assets/{{item.name}}.svg" width="40px" alt=""></td>
+                    <td><img src="https://localhost:7284/resources/images/{{item.name}}" width="40px" alt="">{{item.name}}</td>
                     <td>{{item.name}}</td>
                     <td class="d-flex">
                         <button type="button" class="btn btn-danger btn-sm" (click)="openModal(template, item.id)">

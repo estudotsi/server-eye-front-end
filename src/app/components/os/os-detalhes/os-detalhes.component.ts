@@ -36,7 +36,6 @@ public carregarOs(): void{
         this.form.patchValue(this.os);
         console.log("Aqui os: ", this.os);
         if(this.os.imagemURL !== ''){
-          console.log("Teste", this.os.imagemURL)
           this.imagemUrl = 'https://localhost:7284' + '/resources/images/' + this.os.imagemURL;
         }
       },

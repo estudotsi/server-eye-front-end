@@ -1,5 +1,5 @@
-<div class="row">
-    <div class="col-md-9 pe-0">
+<div class="d-flex justify-content-center flex-wrap custom-div">
+    <div class="col-md-12">
         <div class="card rounded shadow-sm">
             <form [formGroup]="form">
                 <!--<p>Form value: {{ form.value | json }}</p>
@@ -37,7 +37,7 @@
             </form>
         </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-3 custom-image">
         <div [formGroup]="form" class="card-evento-view shadow-sm">
             <div class="form-row d-flex justify-content-center">
                 <div class="form-group">
@@ -45,8 +45,9 @@
                 </div>
             </div>
             <div class="card profile-card custom-card">
-                <p class="text-center custom-class">Upload Imagens</p>
-                <div class="card-img-block d-flex align-items-center justify-content-center">
+                <p class="text-center custom-class"><a href="https://worldvectorlogo.com/{{imagemUrl}}" target="_blank"><i class="bi bi-search"></i>Imagens</a></p>
+                <hr>
+                <div class="card-img-block d-flex align-items-center justify-content-center custom-internal">
                     <img class="image" [src]="imagemUrl" class="img-fluid" (click)="file.click()" alt="Card image cap" />
                 </div>
             </div>
