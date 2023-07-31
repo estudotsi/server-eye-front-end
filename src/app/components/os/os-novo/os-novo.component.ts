@@ -15,6 +15,8 @@ export class OsNovoComponent implements OnInit {
 
   form!: FormGroup;
   os!: Os;
+  imagemUrl = 'assets/upload.png';
+  file!: File;
 
   constructor(private fb: FormBuilder,
               private spinner: NgxSpinnerService,
@@ -28,12 +30,14 @@ export class OsNovoComponent implements OnInit {
 
   public validation(): void{
     this.form = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]]
+      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      imagemURL: ['', [Validators.required]]
     });
   }
 
   public AddOs(){
     this.os = this.form.value;
+    this.os.imagemURL = this.file.name;
     this.spinner.show();
     if(this.form.valid){
       this.service.Add(this.os).subscribe({
@@ -52,6 +56,18 @@ export class OsNovoComponent implements OnInit {
         }
       })
     }
+  }
+
+  onFileChange(ev: any): void {
+    const reader = new FileReader();
+
+    reader.onload = (event: any) => this.imagemUrl = event.target.result;
+
+    this.file = ev.target.files[0];
+    reader.readAsDataURL(this.file);
+    console.log("Aqui: ",this.file);
+
+    console.log(this.file);
 
   }
 
