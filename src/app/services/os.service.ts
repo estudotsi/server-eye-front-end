@@ -32,13 +32,27 @@ export class OsService {
     return this.http.put(`${this.baseUrl}/${os.id}`, os);
   }
 
-  postUpload(osId: number, file: File): Observable<Os> {
+  public SearchImage(nomeArquivo: string): any{
+    return this.http.get(`${this.baseUrl}/searchFile?imagemUrl=${nomeArquivo}`)
+  }
+
+  postUpload(file: File): Observable<Os> {
     const fileToUpload = file as File;
     const formData = new FormData();
     formData.append('file', fileToUpload);
 
     return this.http
-      .post<Os>(`${this.baseUrl}/upload-image/${osId}`, formData)
+      .post<Os>(`${this.baseUrl}/upload-image`, formData)
+      .pipe(take(1));
+  }
+
+  postUploadUpdate(file: File, name: string): Observable<Os> {
+    const fileToUpload = file as File;
+    const formData = new FormData();
+    formData.append('file', fileToUpload);
+
+    return this.http
+      .post<Os>(`${this.baseUrl}/upload-image-up?nameFile=${name}`, formData)
       .pipe(take(1));
   }
 

@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center align-items-center card rounded shadow-sm mb-4">
+<div class="card rounded shadow-sm mb-4">
     <form [formGroup]="form">
         <!--<p>Form value: {{ form.value | json }}</p>
           <p>Form valid: {{ form.status | json }}</p>-->
@@ -20,31 +20,31 @@
                         Máximo 20 caracteres
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="custom-image">
-            <div [formGroup]="form" class="d-flex justify-content-center align-items-center card-evento-view shadow-sm">
-                <div class="form-row d-flex align-items-center justify-content-center">
-                    <div class="form-group">
-                        <input type="file" #file formControlName="imagemURL" (change)="onFileChange($event)" class="form-control" placeholder="" style="display: none">
+                <div class="form-group mt-4">
+                    <label for="imagemURL">Upload</label>
+                    <input type="file" formControlName="imagemURL" (change)="onFileChange($event)" [ngClass]="{ 'is-valid': form.get('imagemURL')?.valid ,'is-invalid': form.get('imagemURL')?.errors && form.get('imagemURL')?.touched  }" class="form-control" id="imagemURL">
+                    <div class="valid-feedback" *ngIf="form.get('imagemURL')?.valid">
+                        Imagem válida
+                    </div>
+                    <div *ngIf="form.get('name')?.hasError('required')" class="invalid-feedback">
+                        Imagem obrigatória
+                    </div>
+                    <div>
+                        <p>{{ msgFile }}</p>
                     </div>
                 </div>
-                <div class="d-flex justify-content-center card profile-card custom-card">
-                    <p class="text-center custom-class"><a href="https://worldvectorlogo.com/{{imagemUrl}}" target="_blank"><i class="bi bi-search"></i>Imagens</a></p>
-                    <hr>
-                    <div class="card-img-block d-flex align-items-center justify-content-center custom-internal">
-                        <img class="image" [src]="imagemUrl" class="img-fluid" (click)="file.click()" alt="Card image cap" />
-                    </div>
+                <div class="d-flex justify-content-center custom-icon">
+                    <a href="https://worldvectorlogo.com" target="_blank"><i class="bi bi-search"></i>Buscar Imagens</a>
                 </div>
             </div>
         </div>
         <div class="card-footer">
             <div class="d-flex justify-content-around">
                 <button class="btn btn-secondary">
-                    Cancelar Alteração
+                    Voltar
                   </button>
-                <button class="btn btn-success ms-2" [disabled]="!form.valid" (click)="AddOs()">
-                    Salvar Evento
+                <button class="btn btn-success ms-2" [disabled]="!form.valid" (click)="save()">
+                    Salvar
                 </button>
             </div>
         </div>

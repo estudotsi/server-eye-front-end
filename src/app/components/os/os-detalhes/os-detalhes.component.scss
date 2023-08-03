@@ -36,6 +36,10 @@ i {
     margin-top: 20px;
 }
 
+p {
+    color: red;
+}
+
 @media screen and (max-width: 775px) {
     .custom-div {
         flex-direction: column;

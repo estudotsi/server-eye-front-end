@@ -23,7 +23,7 @@
             <tr>
                 <th>Servidor</th>
                 <th class="d-none d-md-table-cell">Id</th>
-                <th>SO</th>
+                <th class="d-none d-md-table-cell">SO</th>
                 <th>Nome</th>
                 <th>Opções</th>
             </tr>
@@ -39,13 +39,13 @@
                         <i *ngIf="item.isExpand" class="bi bi-dash-circle custom-icon-dash"></i>
                     </td>
                     <td class="d-none d-md-table-cell">{{item.id}}</td>
-                    <td><img src="https://localhost:7284/resources/images/{{item.name}}" width="40px" alt="">{{item.name}}</td>
+                    <td class="d-none d-md-table-cell"><img src="https://localhost:7284/resources/images/{{item.imagemURL}}" width="120px" height="60px" alt=""></td>
                     <td>{{item.name}}</td>
                     <td class="d-flex">
-                        <button type="button" class="btn btn-danger btn-sm" (click)="openModal(template, item.id)">
+                        <button type="button" class="btn btn-danger mb-3" (click)="openModal(template, item.id)">
                         <i class="bi bi-trash"></i>
                       </button>
-                        <button type="button" class="btn btn-warning btn-sm ms-2" (click)="alterarOs(item.id)">
+                        <button type="button" class="btn btn-warning ms-2 mb-3" (click)="alterarOs(item.id)">
                         <i class="bi bi-pen"></i>
                       </button>
                     </td>

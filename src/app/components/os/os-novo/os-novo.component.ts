@@ -15,8 +15,11 @@ export class OsNovoComponent implements OnInit {
 
   form!: FormGroup;
   os!: Os;
-  imagemUrl = 'assets/upload.png';
+  imagemPath = 'assets/upload.png';
   file!: File;
+  image: any;
+  msgFile!: string;
+
 
   constructor(private fb: FormBuilder,
               private spinner: NgxSpinnerService,
@@ -58,17 +61,54 @@ export class OsNovoComponent implements OnInit {
     }
   }
 
+  uploadImagem(): void {
+    this.spinner.show();
+    this.service.postUpload(this.file).subscribe(
+      () => {
+      },
+      (error: any) => {
+        this.toastr.error('Erro ao fazer upload de imagem', 'Erro!');
+        console.log(error);
+      }
+    ).add(() => this.spinner.hide());
+  }
+
   onFileChange(ev: any): void {
+    this.msgFile = "";
     const reader = new FileReader();
-
-    reader.onload = (event: any) => this.imagemUrl = event.target.result;
-
+    reader.onload = (event: any) => this.image = event.target.result;
     this.file = ev.target.files[0];
+
+    if (this.file && this.file.type !== 'image/svg+xml') {
+      this.form.reset();
+      this.msgFile = "Arquivo inválido, soment .svg";
+      return;
+    }
+
     reader.readAsDataURL(this.file);
-    console.log("Aqui: ",this.file);
+    this.searchFile(this.file.name)
+  }
 
-    console.log(this.file);
+  searchFile(nomeArquivo: string){
+    this.service.SearchImage(nomeArquivo).subscribe({
+      next: (data: any) => {
+        console.log("Searchfile", data);
+      },
+      error: (erro: any)=> {
+        console.log("Erro os: ", erro);
+        this.spinner.hide();
+        this.form.reset();
+        this.toastr.error('Troque o nome do arquivo', 'Erro');
+      },
+      complete: () => {
+        this.spinner.hide();
+      }
+    })
+  }
 
+  save(){
+    this.uploadImagem();
+    this.AddOs();
   }
 
 }
