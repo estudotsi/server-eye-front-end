@@ -26,12 +26,12 @@
                 </div>
                 <div class="card-footer">
                     <div class="d-flex justify-content-between">
-                        <button class="btn btn-secondary">
-                      Cancelar Alteração
-                    </button>
-                        <button class="btn btn-success" [disabled]="!form.valid" (click)="alterarOs()">
-                      Alterar Sistema
-                  </button>
+                      <button class="btn btn-secondary" routerLink="/os/lista">
+                        Listar Sistemas
+                      </button>
+                      <button class="btn btn-success" [disabled]="!form.valid" (click)="alterarOs()">
+                        Alterar Sistema
+                      </button>
                     </div>
                 </div>
             </form>

@@ -12,3 +12,14 @@ export interface Server{
   dBs: Db[],
   os: Os
 }
+
+export interface ServerAdd{
+  ip: string,
+  name: string,
+  rede: string,
+  osId: number
+}
+
+export interface Rede{
+  nomeRede: string
+}

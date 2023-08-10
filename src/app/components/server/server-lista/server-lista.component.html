@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="custom-search">
-            <a class="d-flex btn btn-outline-primary" routerLink="/lista/detalhe">
+            <a class="d-flex btn btn-outline-primary" routerLink="/server/novo">
                 <i class="bi bi-plus-circle-fill custom-icon-circle-fill"></i>
                 <b class="ml-1 d-none d-sm-block">Novo</b>
             </a>
@@ -43,13 +43,13 @@
                     <td class="d-none d-md-table-cell">{{item.id}}</td>
                     <td class="d-none d-md-table-cell">{{item.ip}}</td>
                     <td>{{item.name}}</td>
-                    <td class="d-none d-md-table-cell"><img src="../../../assets/{{item.os.name}}.svg" width="40px" alt="">{{item.os.name}}</td>
+                    <td class="d-none d-md-table-cell"><img src="https://localhost:7284/resources/images/{{ item.os.imagemURL }}" width="120px" alt=""></td>
                     <td class="d-none d-md-table-cell">{{item.rede}}</td>
                     <td class="d-flex">
-                        <button type="button" class="btn btn-danger btn-sm">
+                        <button type="button" class="btn btn-danger btn-sm" (click)="openModal(template, item.id)">
                       <i class="bi bi-trash"></i>
                     </button>
-                        <button type="button" class="btn btn-warning btn-sm ms-2">
+                        <button type="button" class="btn btn-warning btn-sm ms-2" (click)="alterarServer(item.id)">
                       <i class="bi bi-pen"></i>
                     </button>
                     </td>
@@ -91,5 +91,13 @@
         </tfoot>
 
     </table>
+
+    <ng-template #template>
+      <div class="modal-body text-center">
+          <p>Confirma ?</p>
+          <button type="button" class="btn btn-default" (click)="confirm()">Sim</button>
+          <button type="button" class="btn btn-primary" (click)="decline()">Não</button>
+      </div>
+  </ng-template>
 
 </div>

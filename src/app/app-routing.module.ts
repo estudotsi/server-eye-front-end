@@ -10,9 +10,11 @@ import { ApplicationListaComponent } from './components/application/application-
 import { ServerPorRedeComponent } from './components/server/server-por-rede/server-por-rede.component';
 import { RedirectComponent } from './components/server/redirect/redirect.component';
 import { DbComponent } from './components/db/db.component';
-import { DbListaComponent } from './components/db-lista/db-lista.component';
+import { DbListaComponent } from './components/db/db-lista/db-lista.component';
 import { OsNovoComponent } from './components/os/os-novo/os-novo.component';
 import { OsDetalhesComponent } from './components/os/os-detalhes/os-detalhes.component';
+import { ServerNovoComponent } from './components/server/server-novo/server-novo.component';
+import { ServerDetalheComponent } from './components/server/server-detalhe/server-detalhe.component';
 
 const routes: Routes = [
 
@@ -47,6 +49,8 @@ const routes: Routes = [
     path: 'server', component: ServerComponent,
     children: [
       { path: 'lista', component: ServerListaComponent },
+      { path: 'novo', component: ServerNovoComponent },
+      { path: 'detalhe/:id', component: ServerDetalheComponent },
     ],
   },
   { path: 'server-por-rede', component: ServerPorRedeComponent },
