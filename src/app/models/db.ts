@@ -9,3 +9,9 @@ export interface Db{
   server: Server,
   app: Application
 }
+
+export interface DbAdd{
+  ip: string,
+  name: string,
+  serverId: string
+}

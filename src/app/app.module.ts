@@ -28,6 +28,8 @@ import { OsNovoComponent } from './components/os/os-novo/os-novo.component';
 import { OsDetalhesComponent } from './components/os/os-detalhes/os-detalhes.component';
 import { ServerNovoComponent } from './components/server/server-novo/server-novo.component';
 import { ServerDetalheComponent } from './components/server/server-detalhe/server-detalhe.component';
+import { DbNovoComponent } from './components/db/db-novo/db-novo.component';
+import { DbDetalheComponent } from './components/db/db-detalhe/db-detalhe.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,8 @@ import { ServerDetalheComponent } from './components/server/server-detalhe/serve
     OsDetalhesComponent,
     ServerNovoComponent,
     ServerDetalheComponent,
+    DbNovoComponent,
+    DbDetalheComponent,
   ],
   imports: [
     BrowserModule,

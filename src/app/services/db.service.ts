@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Db } from '../models/db';
+import { Db, DbAdd } from '../models/db';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +14,10 @@ export class DbService {
 
   public getDb(): Observable<Db[]> {
     return this.http.get<Db[]>(this.baseUrl);
+  }
+
+  public Add(db: DbAdd): Observable<Db> {
+    return this.http.post<Db>(this.baseUrl, db);
   }
 
 }

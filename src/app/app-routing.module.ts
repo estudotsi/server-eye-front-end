@@ -15,6 +15,8 @@ import { OsNovoComponent } from './components/os/os-novo/os-novo.component';
 import { OsDetalhesComponent } from './components/os/os-detalhes/os-detalhes.component';
 import { ServerNovoComponent } from './components/server/server-novo/server-novo.component';
 import { ServerDetalheComponent } from './components/server/server-detalhe/server-detalhe.component';
+import { DbNovoComponent } from './components/db/db-novo/db-novo.component';
+import { DbDetalheComponent } from './components/db/db-detalhe/db-detalhe.component';
 
 const routes: Routes = [
 
@@ -31,6 +33,8 @@ const routes: Routes = [
     path: 'database', component: DbComponent,
     children: [
       { path: 'lista', component: DbListaComponent },
+      { path: 'novo', component: DbNovoComponent },
+      { path: 'detalhe/:id', component: DbDetalheComponent }
     ],
   },
 
