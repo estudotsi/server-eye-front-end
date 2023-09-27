@@ -20,5 +20,18 @@ export class DbService {
     return this.http.post<Db>(this.baseUrl, db);
   }
 
+  public Delete(id: number): Observable<any>{
+    return this.http.delete(`${this.baseUrl}/${id}`);
+  }
+
+  public getDbById(id: number): Observable<Db> {
+    return this.http.get<Db>(`${this.baseUrl}/${id}`);
+  }
+
+  public UpdateDb(db: Db): Observable<any>{
+    console.log("Undefined: ", db.id);
+    return this.http.put(`${this.baseUrl}/${db.id}`, db);
+  }
+
 }
 

@@ -15,4 +15,8 @@ export class ApplicationService {
   public getApp(): Observable<Application[]> {
     return this.http.get<Application[]>(this.baseUrl);
   }
+
+  public Add(app: Application): Observable<Application> {
+    return this.http.post<Application>(this.baseUrl, app);
+  }
 }

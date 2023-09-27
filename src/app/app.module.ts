@@ -30,6 +30,8 @@ import { ServerNovoComponent } from './components/server/server-novo/server-novo
 import { ServerDetalheComponent } from './components/server/server-detalhe/server-detalhe.component';
 import { DbNovoComponent } from './components/db/db-novo/db-novo.component';
 import { DbDetalheComponent } from './components/db/db-detalhe/db-detalhe.component';
+import { ApplicationNovoComponent } from './components/application/application-novo/application-novo.component';
+import { ApplicationDetalheComponent } from './components/application/application-detalhe/application-detalhe.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { DbDetalheComponent } from './components/db/db-detalhe/db-detalhe.compon
     ServerDetalheComponent,
     DbNovoComponent,
     DbDetalheComponent,
+    ApplicationNovoComponent,
+    ApplicationDetalheComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,7 +7,7 @@ export interface Db{
   ip: string,
   isExpand: boolean,
   server: Server,
-  app: Application
+  app?: Application
 }
 
 export interface DbAdd{

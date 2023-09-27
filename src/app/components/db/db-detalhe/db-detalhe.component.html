@@ -1,1 +1,64 @@
-<p>db-detalhe works!</p>
+<div class="card rounded shadow-sm mb-4">
+    <form [formGroup]="form">
+        <!--<p>Form value: {{ form.value | json }}</p>
+        <p>Form valid: {{ form.status | json }}</p>-->
+        <div class="p-3">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="ip">Ip</label>
+                    <input type="text" id="ip" class="form-control" [ngClass]="{ 'is-valid': form.get('ip')?.valid ,'is-invalid': form.get('ip')?.errors && form.get('ip')?.touched  }" formControlName="ip" placeholder="Insira o IP">
+                    <div class="valid-feedback" *ngIf="form.get('ip')?.valid">
+                        IP válido
+                    </div>
+                    <div *ngIf="form.get('ip')?.hasError('required')" class="invalid-feedback">
+                        IP obrigatório
+                    </div>
+                    <div *ngIf="form.get('ip')?.hasError('minlength')" class="invalid-feedback">
+                        Mínimo 3 caracteres
+                    </div>
+                    <div *ngIf="form.get('ip')?.hasError('maxlength')" class="invalid-feedback">
+                        Máximo 20 caracteres
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" class="form-control" [ngClass]="{ 'is-valid': form.get('name')?.valid ,'is-invalid': form.get('name')?.errors && form.get('name')?.touched  }" formControlName="name" placeholder="Insira o nome do banco">
+                    <div class="valid-feedback" *ngIf="form.get('name')?.valid">
+                        Nome válido
+                    </div>
+                    <div *ngIf="form.get('name')?.hasError('required')" class="invalid-feedback">
+                        Nome obrigatório
+                    </div>
+                    <div *ngIf="form.get('name')?.hasError('minlength')" class="invalid-feedback">
+                        Mínimo 3 caracteres
+                    </div>
+                    <div *ngIf="form.get('name')?.hasError('maxlength')" class="invalid-feedback">
+                        Máximo 20 caracteres
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="server" class="form-label mt-4">Escolha o servidor</label>
+                <select class="form-select" id="serverId" [ngClass]="{ 'is-valid': form.get('serverId')?.valid ,'is-invalid': form.get('serverId')?.errors && form.get('serverId')?.touched  }" formControlName="serverId">
+            <option selected="selected" [ngValue]="null" disabled>Escolha o servidor aqui</option>
+            <option *ngFor="let item of server" value= {{item.id}}>{{ item.name }}</option>
+          </select>
+                <div class="valid-feedback" *ngIf="form.get('serverId')?.valid">
+                    Servidor válido
+                </div>
+                <div *ngIf="form.get('serverId')?.hasError('required')" class="invalid-feedback">
+                    Servidor obrigatório
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="d-flex justify-content-around">
+                <button class="btn btn-success ms-2" [disabled]="!form.valid" (click)="alterarDb()">
+                  Salvar
+              </button>
+            </div>
+        </div>
+    </form>
+</div>

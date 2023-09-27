@@ -20,7 +20,6 @@ export class OsNovoComponent implements OnInit {
   image: any;
   msgFile!: string;
 
-
   constructor(private fb: FormBuilder,
               private spinner: NgxSpinnerService,
               private service: OsService,

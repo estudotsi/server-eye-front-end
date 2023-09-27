@@ -17,6 +17,8 @@ import { ServerNovoComponent } from './components/server/server-novo/server-novo
 import { ServerDetalheComponent } from './components/server/server-detalhe/server-detalhe.component';
 import { DbNovoComponent } from './components/db/db-novo/db-novo.component';
 import { DbDetalheComponent } from './components/db/db-detalhe/db-detalhe.component';
+import { ApplicationNovoComponent } from './components/application/application-novo/application-novo.component';
+import { ApplicationDetalheComponent } from './components/application/application-detalhe/application-detalhe.component';
 
 const routes: Routes = [
 
@@ -25,6 +27,8 @@ const routes: Routes = [
     path: 'application', component: ApplicationComponent,
     children: [
       { path: 'lista', component: ApplicationListaComponent },
+      { path: 'novo', component: ApplicationNovoComponent },
+      { path: 'detalhe/:id', component: ApplicationDetalheComponent }
     ],
   },
 
